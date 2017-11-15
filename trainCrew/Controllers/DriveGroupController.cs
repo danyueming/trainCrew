@@ -67,6 +67,7 @@ namespace trainCrew.Controllers
             }
 
             ViewBag.DriverTeamID = new SelectList(db.DriverTeams, "DriverTeamID", "TeamName", drivergroup.DriverTeamID);
+            
             return View(drivergroup);
         }
 

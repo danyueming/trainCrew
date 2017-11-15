@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using trainCrew.Models;
 using trainCrew.DAL;
@@ -19,16 +17,26 @@ namespace trainCrew.Controllers
         // GET: /DriverTeam/
         public ActionResult Index(string searchString, int? page)
         {
-            if (searchString != null)
-                {
-                    page = 1;
-                 }
-            else
-                {
-                    searchString = currentFilter;
-                }
-        ViewBag.CurrentFilter = searchString;
-            return View(db.DriverTeams.ToList());
+          
+
+         
+            var teams = from t in db.DriverTeams
+                        select t;
+                        
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                teams = teams.Where(s => s.TeamName.Contains(searchString));
+
+            }
+           
+                
+            teams = teams.OrderBy(s => s.DriverTeamID);
+          
+
+            int pageSize = 2;//设置每页的大小
+            int pageNumber = (page ?? 1);
+
+            return View(teams.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: /DriverTeam/Details/5

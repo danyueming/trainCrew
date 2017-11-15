@@ -1,4 +1,8 @@
-﻿@model IEnumerable<trainCrew.Models.DriverTeam>
+﻿@model PagedList.IPagedList<trainCrew.Models.DriverTeam>
+@using PagedList.Mvc;
+@using PagedList;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @{
     ViewBag.Title = "Index";
@@ -6,19 +10,30 @@
 
 <h2>Index</h2>
 
+</p>
+@using (Html.BeginForm("Index", "DriverTeam", FormMethod.Get))
+{
+    <p>
+        
+        搜索队名: @Html.TextBox("searchString")
+        <input type="submit" value="搜索" />
+    </p>
+}
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TeamName)
+            机队名称
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.GroupNumber)
+           机班数量
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.remark)
+            备注
         </th>
-        <th>操作</th>
+        <th>
+             操作
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -41,6 +56,11 @@
 }
 
 </table>
+<br />
+页数 @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) 到 @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",new{ page = page}))
+
+<br/>
 
 <div>
     <p style="font-size:large">

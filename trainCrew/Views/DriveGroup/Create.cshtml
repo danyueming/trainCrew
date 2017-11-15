@@ -18,22 +18,21 @@
     <div class="form-horizontal">
        
         @Html.ValidationSummary(true)
-
         <div class="form-group">
-            @Html.LabelFor(model => model.DriverGroupID, "地铁机队信息",new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DriverGroupID)
-                @Html.ValidationMessageFor(model => model.DriverGroupID)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DriverTeamID, "地铁机队信息", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DriverTeamID, "机队信息", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("DriverTeamID", String.Empty)
                 @Html.ValidationMessageFor(model => model.DriverTeamID)
             </div>
         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DriverTeam.GroupNumber, "机班数目", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DriverTeam.GroupNumber)
+                @Html.ValidationMessageFor(model => model.DriverTeam.GroupNumber)
+            </div>
+        </div>  
 
         <div class="form-group">
             @Html.LabelFor(model => model.DriverGroupName, new { @class = "control-label col-md-2" })
