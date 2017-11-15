@@ -1,0 +1,41 @@
+﻿@model trainCrew.Models.DriverGroup
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<div class="text-warning">
+    <h3>正在进行删除操作</h3>
+</div>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DriverTeam.TeamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DriverTeam.TeamName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DriverGroupName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DriverGroupName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="删除" class="btn btn-default" /> |
+            @Html.ActionLink("返回列表", "Index")
+        </div>
+    }
+</div>

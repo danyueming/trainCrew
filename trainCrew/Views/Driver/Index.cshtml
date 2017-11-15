@@ -1,0 +1,84 @@
+﻿@model IEnumerable<trainCrew.Models.Driver>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+
+
+<div>
+    @using (Html.BeginForm("Index", "Driver", FormMethod.Get))
+    {
+        <p>
+            司机类型: @Html.DropDownList("drivertype", "所有类型")
+            司机姓名: @Html.TextBox("searching") <br />
+            <input type="submit" value="查询" />
+        </p>
+    }
+</div>
+<table class="table">
+    <tr>
+        <th>
+            机队名称
+        </th>
+        <th>
+           机班名称
+        </th>
+        <th>
+            机班的司机人数
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriverName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sex)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriveType)
+        </th>
+        <th>操作</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverGroup.DriverTeam.TeamName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverGroup.DriverGroupName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverGroup.GroupPeople)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Sex)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Birthday)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriveType)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DriverID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DriverID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DriverID })
+        </td>
+    </tr>
+}
+
+</table>
+<p class="text-info">
+    @Html.ActionLink("新建司机", "Create")
+</p>

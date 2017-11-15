@@ -1,0 +1,51 @@
+﻿@model trainCrew.Models.DriverGroup
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="text-success">
+    <div>
+        <h3>地铁机班信息</h3>
+    </div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DriverTeam.TeamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DriverTeam.TeamName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DriverTeam.GroupNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DriverTeam.GroupNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DriverGroupName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DriverGroupName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupPeople)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupPeople)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("编辑", "Edit", new { id = Model.DriverGroupID }) |
+    @Html.ActionLink("返回列表", "Index")
+</p>

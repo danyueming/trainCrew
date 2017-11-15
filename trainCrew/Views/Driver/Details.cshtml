@@ -1,0 +1,59 @@
+﻿@model trainCrew.Models.Driver
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class="text-info">
+    <h4>司机信息</h4>
+	<hr />
+    <dl class="dl-horizontal" style="font-size:large">
+        <dt>
+            @Html.DisplayNameFor(model => model.DriverGroup.DriverGroupName)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.DriverGroup.DriverGroupName)
+        </dd>
+        
+        <dd></dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DriverName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DriverName)
+        </dd>
+        <dd></dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+        <dd></dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birthday)
+        </dd>
+        <dd></dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DriveType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DriveType)
+        </dd>
+        <dd></dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("修改", "Edit", new { id = Model.DriverID }) |
+    @Html.ActionLink("返回列表", "Index")
+</p>

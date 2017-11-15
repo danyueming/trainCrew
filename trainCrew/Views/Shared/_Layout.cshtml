@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Loading Bootstrap -->
+    <link href="Content/bootstrap.css" rel="stylesheet">
+    <link href="Content/jquery.mCustomScrollbar.css" rel="stylesheet">
+    <!-- Loading Flat UI -->
+    <link href="Content/flat-ui.css" rel="stylesheet">
+    <link href="Content/style.css" rel="stylesheet">
+    <link rel="Bookmark" href="images/defaultPhoto.png" />
+    <link rel="Shortcut Icon" href="images/defaultPhoto.png" />
+
+
+    <title>排班系统 -@ViewBag.Title </title>
+    @Styles.Render("~/Content/bootstrap.min.css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body style="font-family: '幼圆'">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("列车信息", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("信息管理", "Index", "Login")</li>
+                    <li>@Html.ActionLink("后勤管理", "About", "Login")</li>
+                    <li>@Html.ActionLink("其他", "Contact", "Login")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - 测试程序</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

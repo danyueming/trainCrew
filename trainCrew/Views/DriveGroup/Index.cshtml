@@ -1,0 +1,58 @@
+﻿@model IEnumerable<trainCrew.Models.DriverGroup>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DriverTeam.TeamName)
+        </th>
+        <th>
+            机班数目
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriverGroupName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupPeople)
+        </th>
+        <th>操作</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverTeam.TeamName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverTeam.GroupNumber)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverGroupName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.GroupPeople)
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DriverGroupID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DriverGroupID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DriverGroupID })
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    <p style="font-size:large">
+        @Html.ActionLink("新增机班", "Create")
+    </p>
+</div>
