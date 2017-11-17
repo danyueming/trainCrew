@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CrewTableController.cs" />
     <Compile Include="Controllers\DriveGroupController.cs" />
     <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\DriverTeamController.cs" />
@@ -234,6 +235,7 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <Content Include="Views\CrewTable\Index.cshtml" />
     <None Include="Web References\WeatherWeb\WeatherWebService.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
