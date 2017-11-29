@@ -14,7 +14,7 @@ namespace trainCrew.Controllers
     {
         private TrainContext UserContext = new  TrainContext();
         public ActionResult Index()
-        {
+        {           
             return View();
         }
 

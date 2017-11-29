@@ -135,6 +135,7 @@
     <Compile Include="Controllers\DriverTeamController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\RouteTableController.cs" />
     <Compile Include="DAL\TrainContext.cs" />
     <Compile Include="DAL\TrainInitializer.cs" />
     <Compile Include="ExceptionLog\BaseExceptionController.cs" />
@@ -142,12 +143,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HandleFunction\Common.cs" />
+    <Compile Include="HandleFunction\FAT.cs" />
+    <Compile Include="HandleFunction\Genotype.cs" />
+    <Compile Include="HandleFunction\Phenotype.cs" />
+    <Compile Include="HandleFunction\ProblemChecks.cs" />
+    <Compile Include="HandleFunction\ReadFile.cs" />
+    <Compile Include="HandleFunction\RouteLine.cs" />
+    <Compile Include="HandleFunction\Service.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\DriverGroup.cs" />
     <Compile Include="Models\DriverTeam.cs" />
     <Compile Include="Models\SystemUser.cs" />
     <Compile Include="Models\Train\GeneralConfig.cs" />
     <Compile Include="Models\Train\Station.cs" />
+    <Compile Include="Models\Train\TimeInterval.cs" />
+    <Compile Include="Models\Train\Train.cs" />
     <Compile Include="Models\Train\Trip.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -236,6 +247,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
     <Content Include="Views\CrewTable\Index.cshtml" />
+    <Content Include="Views\RouteTable\Index.cshtml" />
     <None Include="Web References\WeatherWeb\WeatherWebService.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
