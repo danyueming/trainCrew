@@ -2,53 +2,188 @@
     Layout = null;
 }
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
-    
-  @Styles.Render("~/Content/stylesheets/style.css")
- @Scripts.Render("~/Content/js/jquery.min.js")
-   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>排班管理系统主菜单</title>
+
+    @Styles.Render("~/Content/css/jquery-accordion-menu.css")
+    @Styles.Render("~/Content/css/font-awesome.css")
+
+    @Scripts.Render("~/Scripts/js/jquery-1.11.2.min.js")
+    @Scripts.Render("~/Scripts/js/jquery-accordion-menu.js")
+
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f0f0;
+        }
+
+        .content {
+            width: 8%;
+            margin: 2px;
+        }
+
+        .filterinput {
+            background-color: rgba(249, 244, 244, 0);
+            border-radius: 15px;
+            width: 60%;
+            height: 30px;
+            border: thin solid #FFF;
+            text-indent: 0.5em;
+            font-weight: bold;
+            color: #FFF;
+        }
+
+        #demo-list a {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+        }
+    </style>
+
 
     <script type="text/javascript">
-        $('dd').hide();
-        $('dt').click(function () {
-            $(this).parent().find('dd').slideToggle(100)
-        })
 
+        $(function () {
+            //顶部导航切换
+            $("#demo-list li").click(function () {
+                $("#demo-list li.active").removeClass("active")
+                $(this).addClass("active");
+            })
+        })
     </script>
 </head>
-<body  style="font-family:Arial">
-    <div id="menu" style="width: 100%;height: 100%;">
-        <div id="testhead" style="width: 100%;background:#0def2b;height: 100px;">
 
-            <h2 >欢迎来到地铁排班系统</h2>
-            <h3 style="font-size:large"> <span style="float: right;">你好!  @ViewBag.UserName | <a href="#" style="color: black;text-decoration: none;">退出</a>
-                </span></h3>
+
+<body>
+    <div id="menu" style="width: 100%;height: 100%;">
+
+        <div id="testhead" style="width: 100%;background:#c7ae0e;height: 150px;">
+
+            <h2>欢迎来到地铁排班系统</h2>
+            <h3 style="font-size:large">
+                <span style="float: right;">
+                    你好!  @ViewBag.UserName | <a href="#" style="color: black;text-decoration: none;">退出</a>
+                </span>
+            </h3>
             <div style="font-size:large">
-             <p style="display:inline">成都天气：@ViewBag.CityWeather[6]</p>  &nbsp; &nbsp; &nbsp;
-              <p style="display:inline">温度：@ViewBag.CityWeather[5]</p>
+              
+                <p style="display:inline">成都天气：@ViewBag.CityWeather[6]</p>  &nbsp; &nbsp; &nbsp;
+                <img src="/images/weather/a_@ViewBag.CityWeather[8]" /> ~
+                <img src="/images/weather/a_@ViewBag.CityWeather[9]" /> &nbsp; &nbsp; 
+                <p style="display:inline">温度：@ViewBag.CityWeather[5]</p>
             </div>
 
         </div>
-        <div id="testleft" style="height: 90%;background: #007AFF;width: 15%;margin: 1px 0px;float: left;">
-            <dl class="menu" style="margin: 0px;">
-                <dt>排班管理 </dt>
-                <dd>@Html.ActionLink("机队信息", "Index", "DriverTeam", new { @class = "menu1" }, new { target = "iframe" })</dd>
-                <dd>@Html.ActionLink("机班信息", "Index", "DriveGroup", new { @class = "menu1" }, new { target = "iframe" })</dd>
-                <dd>@Html.ActionLink("司机信息", "Index", "Driver", new { @class = "menu1" }, new { target = "iframe" })</dd>
-                <dd>@Html.ActionLink("交路表信息", "Index", "RouteTable", new { @class = "menu1" }, new { target = "iframe" })</dd>
-                <dd><a href="http://www.baidu.com" target="iframe" class="menu1">交路表管理</a></dd>
-                <dd>@Html.ActionLink("排班表", "Index", "CrewTable", new { @class = "menu1" }, new { target = "iframe" })</dd>
-                <dd><a href="" target="iframe" class="menu1">开放系统</a>
-            </dl>
-        </div>
-        <div id="testright" style="float: right;width: 84%;margin:1px 0px 1px 0px">
-            <iframe id="if1" name="iframe" src="" style="width: 100%; height:600px;"></iframe>
 
+        <div class="content">
+            <div id="jquery-accordion-menu" class="jquery-accordion-menu blue">
+                <div class="jquery-accordion-menu-header" id="form"></div>
+                <ul id="demo-list">
+                    <li >
+                        <a target="iframe" href="@Url.Action("Index","DriverTeam")">
+                            <i class="fa fa-home"></i>
+                            机队信息
+                        </a>
+                    </li>
+
+                    <li >
+                        <a target="iframe" href="@Url.Action("Index", "DriveGroup")">
+                            <i class="fa fa-glass"></i>
+                            机班信息
+                        </a>
+                    </li>
+
+
+                    <li >
+                        <a target="iframe" href="@Url.Action("Index", "RouteTable")">
+                            <i class="fa fa-file-image-o"></i>
+                            司机信息
+                        </a>
+                    </li>
+                    <li >
+                        <a target="iframe" href="@Url.Action( "Index", "CrewTable")">
+                            <i class="fa fa-suitcase"></i>
+                            列车班次表
+                        </a>
+                    </li>
+
+                    <li>
+                        <a target="iframe" href="http://www.baidu.com"><i class="fa fa-suitcase"></i>人员班次表 </a>
+
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-cog"></i>系统管理 </a>
+                        <ul class="submenu">
+                            <li><a href="#">Web Design </a></l
+                            <li><a href="#">Photoshop </a></li>
+                            <li><a href="#">Programming </a></li>
+                        </ul>
+                    </li>
+
+                    <li><a href="#"><i class="fa fa-user"></i>用户权限 </a></li>
+                 
+
+                </ul>
+            </div>
+        </div>
+
+        <div id="testright" style="float: right;width: 80%;margin:0px 0px 1px 0px">
+
+            <iframe id="if1" name="iframe" src="" style="width: 100%; height:600px;"></iframe>
         </div>
     </div>
+
+
+    <script type="text/javascript">
+        (function ($) {
+            $.expr[":"].Contains = function (a, i, m) {
+                return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+            };
+            function filterList(header, list) {
+
+                //创建一个搜素表单
+                var form = $("<form>").attr({
+                    "class": "filterform",
+                    action: "#"
+                }), input = $("<input>").attr({
+                    "class": "filterinput",
+                    type: "text"
+                });
+                $(form).append(input).appendTo(header);
+                $(input).change(function () {
+                    var filter = $(this).val();
+                    if (filter) {
+                        $matches = $(list).find("a:Contains(" + filter + ")").parent();
+                        $("li", list).not($matches).slideUp();
+                        $matches.slideDown();
+                    } else {
+                        $(list).find("li").slideDown();
+                    }
+                    return false;
+                }).keyup(function () {
+                    $(this).change();
+                });
+            }
+            $(function () {
+                filterList($("#form"), $("#demo-list"));
+            });
+        })(jQuery);
+    </script>
+
+   
+
+
 </body>
 
 </html>

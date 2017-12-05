@@ -150,3 +150,9 @@ F:\trainCrew\trainCrew\bin\zh-Hans\System.Web.WebPages.resources.dll
 F:\trainCrew\trainCrew\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 F:\trainCrew\trainCrew\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 F:\trainCrew\trainCrew\obj\Debug\trainCrew.pdb
+F:\trainCrew\trainCrew\bin\AForge.dll
+F:\trainCrew\trainCrew\bin\AForge.Genetic.dll
+F:\trainCrew\trainCrew\bin\AForge.Math.dll
+F:\trainCrew\trainCrew\bin\AForge.xml
+F:\trainCrew\trainCrew\bin\AForge.Genetic.xml
+F:\trainCrew\trainCrew\bin\AForge.Math.xml

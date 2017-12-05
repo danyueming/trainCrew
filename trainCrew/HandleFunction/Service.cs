@@ -34,6 +34,7 @@ namespace trainCrew.HandleFunction
             this.timeContinuosDriving = new TimeSpan(0, 0, 0);
             this.timeLeisure = new TimeSpan(0, 0, 0);
             this.hasLunch = false;
+            this.blocks = new List<TimeInterval>();
 
         }
 
@@ -45,9 +46,9 @@ namespace trainCrew.HandleFunction
 
         }
 
-        public bool push(int dataTrip)//抓到一个车次，并尝试将其堆在此空间中，如果不能堆叠它，返回false，否则true
+        public bool push(int dataTripID)//抓取一个车次，并尝试将其堆在此空间中，如果不能堆叠它，返回false，否则true
         {
-            RouteLine candidate = Common.routelines[dataTrip];//要入栈的车次
+            RouteLine candidate = Common.routelines[dataTripID];//要入栈的车次
             TimeSpan aux;//辅助变量
 
             //块为空
@@ -116,7 +117,7 @@ namespace trainCrew.HandleFunction
             else
                 timeContinuosDriving = new TimeSpan(0, 0, 0);
 
-            _push("Trip", candidate);
+            _push("RouteLine", candidate);
             _push("Fat", null);
             return true;
 
@@ -127,72 +128,79 @@ namespace trainCrew.HandleFunction
         private void _push(string typeName, object source)
         {
             TimeInterval candidate = new TimeInterval();
-           
-	        if (typeName.Equals("RouteLine"))//类型为车次
+
+            if (typeName.Equals("Trip"))//类型为车次
             {
-		        RouteLine  tr = (RouteLine ) source;
-		        candidate.TimeIntervalID = tr.RouteLineID;
-		        candidate.type = "RouteLine";
-		        candidate.initTime = tr.InitTime;
-		        candidate.endTime = tr.EndTime;
-		        candidate.cc = timeContinuosDriving;
-		        candidate.c = timeDriving;
-		        blocks.Add(candidate);
-		        return;
-	        }
+                RouteLine tr = (RouteLine)source;
+                candidate.TimeIntervalID = tr.RouteLineID;
+                candidate.type = "RouteLine";
+                candidate.initTime = tr.InitTime;
+                candidate.endTime = tr.EndTime;
+                candidate.cc = timeContinuosDriving;
+                candidate.c = timeDriving;
+                blocks.Add(candidate);
+                return;
+            }
 
-	        // Rest => source == NULL
-	        else if(typeName.Equals("Rest")) {//候选车次是休息模块
-		    TimeSpan basetime = blocks[blocks.Count() - 1].endTime;
-		    TimeSpan next = basetime + Common.generalIntervals["restLength"];
-		    candidate.TimeIntervalID = -1;
-		    candidate.type = "Rest";
-		    candidate.initTime = basetime;
-		    candidate.endTime = next;
-		    blocks.Add(candidate);
-		    return;
-	    }
-
-	    // Fat => source == NULL
-	    else if(typeName.Equals("Fat")) {//候选车次是高峰期模块
-		TimeInterval daFat=new TimeInterval(Common.fats, blocks[blocks.Count() - 1].endTime);
-		daFat.type = "Fat";
-		daFat.TimeIntervalID = -1;
-		blocks.Add(daFat);
-		return;
-	}
-
-	// Leisure
-	    else if(typeName.Equals("Leisure")) 
-       {
-		    TimeSpan  leend = (TimeSpan) source;
-		    candidate.TimeIntervalID = -1;
-		    candidate.type = "Leisure";
-		    candidate.initTime = blocks[blocks.Count() - 1].endTime;
-		    candidate.endTime = leend;
-		    if(candidate.Timelength().TotalMinutes < 20)
-			    candidate.type = "Fat";
-		        blocks.Add(candidate);
-		        return;
-	}
-            // Lunch => source == NULL
-	    else if(typeName.Equals("Lunch"))
-            {
-                TimeSpan basetime =  blocks[blocks.Count() - 1].endTime;
-		        TimeSpan next = basetime + Common.generalIntervals["lunchLength"];
-		        candidate.TimeIntervalID = -1;
-		        candidate.type = "Lunch";
-		        candidate.initTime = basetime;
+            // Rest => source == NULL
+            else if (typeName.Equals("Rest"))
+            {//候选车次是休息模块
+                TimeSpan basetime = new TimeSpan(0, 0, 0);
+                basetime = blocks[blocks.Count() - 1].endTime;
+                TimeSpan next = basetime + Common.generalIntervals["restLength"];
+                candidate.TimeIntervalID = -1;
+                candidate.type = "Rest";
+                candidate.initTime = basetime;
                 candidate.endTime = next;
-		        blocks.Add(candidate);
-		        return;
-		  
-	        }
-	        
+                blocks.Add(candidate);
+                return;
+            }
 
-	else {
-		    Environment.Exit(0);
-	    }
+        // Fat => source == NULL
+            else if (typeName.Equals("Fat"))
+            {//候选车次是高峰期模块
+                TimeInterval daFat = new TimeInterval(Common.fats, blocks[blocks.Count() - 1].endTime);
+                daFat.type = "Fat";
+                daFat.TimeIntervalID = -1;
+                blocks.Add(daFat);
+                return;
+            }
+
+        // Leisure
+            else if (typeName.Equals("Leisure"))
+            {
+                TimeSpan leend = new TimeSpan(0,0,0);
+                leend = (TimeSpan)source;
+                candidate.TimeIntervalID = -1;
+                candidate.type = "Leisure";
+                candidate.initTime = blocks[blocks.Count() - 1].endTime;
+                candidate.endTime = leend;
+                if (candidate.Timelength().TotalMinutes < 20)
+                    candidate.type = "Fat";
+                blocks.Add(candidate);
+                return;
+            }
+            // Lunch => source == NULL
+            else if (typeName.Equals("Lunch"))
+            {
+                TimeSpan basetime = new TimeSpan(0,0,0);
+               int result= blocks.Count();
+                basetime = blocks[blocks.Count() - 1].endTime;
+                TimeSpan next = basetime + Common.generalIntervals["lunchLength"];
+                candidate.TimeIntervalID = -1;
+                candidate.type = "Lunch";
+                candidate.initTime = basetime;
+                candidate.endTime = next;
+                blocks.Add(candidate);
+                return;
+
+            }
+
+
+            else
+            {
+                Environment.Exit(0);
+            }
 
         }
 

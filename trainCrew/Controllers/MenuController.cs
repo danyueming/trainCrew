@@ -20,12 +20,16 @@ namespace trainCrew.Controllers
             ViewBag.UserName = returnUser.Name;
 
             WeatherWeb.WeatherWebService webWeather = new WeatherWeb.WeatherWebService();
-            string[] cityWeather = webWeather.getWeatherbyCityName("成都");//获取天气信息
+           string[] cityWeather = webWeather.getWeatherbyCityName("成都");//获取天气信息
 
-            ViewBag.CityWeather = cityWeather;
+           ViewBag.CityWeather = cityWeather;
 
             return View();
 
         }
+
+       
+
+
 	}
 }

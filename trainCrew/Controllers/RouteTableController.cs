@@ -21,6 +21,9 @@ namespace trainCrew.Controllers
             rd.Read();
             int size = Common.routelines.Count();//车次链的数目
 
+            Genotype.bodyofgenetic();
+
+            var result = Common.services;
 
             return View();
         }
