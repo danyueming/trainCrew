@@ -156,3 +156,4 @@ F:\trainCrew\trainCrew\bin\AForge.Math.dll
 F:\trainCrew\trainCrew\bin\AForge.xml
 F:\trainCrew\trainCrew\bin\AForge.Genetic.xml
 F:\trainCrew\trainCrew\bin\AForge.Math.xml
+F:\trainCrew\trainCrew\obj\Debug\trainCrew.csproj.ResolveComReference.cache

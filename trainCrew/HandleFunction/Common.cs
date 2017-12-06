@@ -16,6 +16,8 @@ namespace trainCrew.HandleFunction
 
         public static List<Service> services;
 
+        public static List<double> fitData;
+
         public static Dictionary<string, TimeSpan> generalIntervals;
 
 
@@ -35,6 +37,8 @@ namespace trainCrew.HandleFunction
             routelines = new List<RouteLine>();//作业段集合
 
             services = new List<Service>();
+
+            fitData = new List<double>();
 
 
 

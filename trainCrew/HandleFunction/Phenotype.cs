@@ -39,7 +39,7 @@ namespace trainCrew.HandleFunction
             int i;
             for (i = 0; i < Common.services.Count(); i++)
             {
-                if (Common.services[i].push(daTrip))
+                if (Common.services[i].push(daTrip))//已经装入过，直接返回
                     return;
             }
             //Then it does not fit in any then a new one is added，如果不符合，则添加一个新的车次链
@@ -60,6 +60,7 @@ namespace trainCrew.HandleFunction
         {
             double countservice = Common.services.Count();//车次链的个数
             double lesiureservice = 0.0D;
+            double result = 0.0D;
 
             //计算每个车次链的平均闲暇时间
             for (int i = 0; i < Common.services.Count(); i++)
@@ -70,8 +71,10 @@ namespace trainCrew.HandleFunction
             //适应度 ：service数量的比重大，平均时间比重小
             countservice = countservice * 0.8;
             lesiureservice = lesiureservice * 0.2;
+            result = countservice + lesiureservice;
+            Common.fitData.Add(result);
 
-            return countservice + lesiureservice;
+            return result;
 
         }
 

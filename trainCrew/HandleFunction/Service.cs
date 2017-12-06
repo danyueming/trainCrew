@@ -20,7 +20,6 @@ namespace trainCrew.HandleFunction
 
         public TimeSpan timeLeisure { get; set; }//空闲时间
 
-
         public bool hasLunch { get; set; }//午餐
         public FAT fat { get; set; }//高峰期
 

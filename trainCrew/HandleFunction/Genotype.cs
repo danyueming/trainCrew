@@ -7,7 +7,7 @@ using AForge;
 
 namespace trainCrew.HandleFunction
 {
-    public class Genotype//基因族群
+    public class Genotype//染色体
     {
 
         /*
@@ -47,6 +47,7 @@ namespace trainCrew.HandleFunction
                population.RunEpoch();//执行
                iter++;
             }
+
               string resultbest = population.BestChromosome.ToString();//最佳的染色体
           //      Common.services.Clear();
             Phenotype bestResult = new Phenotype();

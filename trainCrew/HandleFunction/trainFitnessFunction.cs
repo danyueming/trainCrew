@@ -12,8 +12,6 @@ namespace trainCrew.HandleFunction
     {
 
         private List<RouteLine> routeline ;
-
-
     
         private int popSize = 500;//种群大小
         private int cantGen = 500;//迭代次数

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using trainCrew.Models.Train;
 using trainCrew.HandleFunction;
+using System.Threading;
 
 namespace trainCrew.Controllers
 {
@@ -15,6 +16,7 @@ namespace trainCrew.Controllers
       
         //
         // GET: /RouteTable/
+          [AllowAnonymous]
         public ActionResult Index()
         {
             ReadFile rd = new ReadFile();
@@ -24,6 +26,12 @@ namespace trainCrew.Controllers
             Genotype.bodyofgenetic();
 
             var result = Common.services;
+
+            Thread CreateExcelthread = new Thread(new ThreadStart(CreatExcel.Creat));
+            CreateExcelthread.Start();
+
+            
+
 
             return View();
         }

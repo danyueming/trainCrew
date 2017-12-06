@@ -105,11 +105,12 @@
 
 
                     <li >
-                        <a target="iframe" href="@Url.Action("Index", "RouteTable")">
+                        <a target="iframe" href="@Url.Action("Index", "Driver")">
                             <i class="fa fa-file-image-o"></i>
                             司机信息
                         </a>
                     </li>
+
                     <li >
                         <a target="iframe" href="@Url.Action( "Index", "CrewTable")">
                             <i class="fa fa-suitcase"></i>
@@ -118,16 +119,18 @@
                     </li>
 
                     <li>
-                        <a target="iframe" href="http://www.baidu.com"><i class="fa fa-suitcase"></i>人员班次表 </a>
+                        <a target="iframe" href="@Url.Action( "Index", "RouteTable")">
+                        
+                        <i class="fa fa-suitcase"></i>人员班次表 </a>
 
                     </li>
 
-                    <li>
-                        <a href="#"><i class="fa fa-cog"></i>系统管理 </a>
+                    <li >
+                        <a id="subtest" href="#"><i class="fa fa-cog"></i>系统管理 </a>
                         <ul class="submenu">
-                            <li><a href="#">Web Design </a></l
-                            <li><a href="#">Photoshop </a></li>
-                            <li><a href="#">Programming </a></li>
+                            <li><a href="#">设备管理 </a></li>
+                            <li><a href="#">台账管理 </a></li>
+                            <li><a href="#">后勤管理 </a></li>
                         </ul>
                     </li>
 
@@ -181,7 +184,14 @@
         })(jQuery);
     </script>
 
-   
+   <script type="text/javascript">
+
+     
+       $('ul>li>a').click(function () {
+
+           $(this).next('ul').toggle(200);
+       })
+   </script>
 
 
 </body>
