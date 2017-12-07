@@ -1,50 +1,55 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-    
+
 }
 
 @model trainCrew.Models.SystemUser
 
 
-<div class="container web-body" style="margin-top:100px;width: 900px;">
-    <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-            <div class="panel panel-default">              
-                <div class="panel-heading" style="height: 50px;">
-                    <div class="panel-title" style="text-align: left">用户登录</div>
-                </div>
-                <div class="panel-body">
-                    @using (Html.BeginForm("Contact", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                    {
-                        @Html.AntiForgeryToken()
-
-                        @Html.ValidationSummary(true)
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.Name, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Name)
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(m => m.Name, new { @class = "login-field-icon fui-man-16" })
-                                @Html.ValidationMessageFor(m => m.Name)
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.Password, new { @class = "form-control" })
-                            <div class="col-md-10">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.Password)
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="登录" class="btn btn-primary btn-large btn-block" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.ActionLink("注册", "Register",new {@class = "login-link"})
-                        </div>
-                    }
-                </div>
+<div class="container ">
+    <div class="login">
+        <div class="login-screen">
+            <div class="login-icon">
+                <img src="/images/github-256-black.png" alt="天府在线排班" title="天府在线排班" width:"200px" height:"200px" />
+                <h4>欢迎使用 <small>排班系统</small></h4>
             </div>
+
+            <div class="login-form">
+                @using (Html.BeginForm("Contact", "Login", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary(true)
+                    <div class="control-group">
+
+                        @Html.ValidationMessageFor(m => m.Name)
+
+                        <label class="login-field-icon fui-man-16" for="login-name">账号</label>
+                        @Html.TextBoxFor(m => m.Name, new { @class = "login-field" })
+                        @Html.ValidationMessageFor(m => m.Name)
+
+
+                    </div>
+                    <div class="control-group">
+
+
+                        <label class="login-field-icon fui-lock-16" for="login-pass">密码</label>
+                        @Html.PasswordFor(m => m.Password, new { @class = "login-field" })
+                        @Html.ValidationMessageFor(m => m.Password)
+
+                    </div>
+                    <div class="control-group">
+
+                        <input type="submit" value="登录" class="btn btn-primary btn-large btn-block" />
+
+                    </div>
+                    <div class="control-group">
+                        <a class="login-link"  target="" href="@Url.Action("Register", "Login")">忘记密码?</a>
+                    </div>
+
+                }
+            </div>
+
         </div>
     </div>
 </div>
